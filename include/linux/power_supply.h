@@ -140,6 +140,7 @@ enum power_supply_property {
 	/* Local extensions */
 	POWER_SUPPLY_PROP_USB_HC,
 	POWER_SUPPLY_PROP_USB_OTG,
+	POWER_SUPPLY_PROP_CHARGE_ENABLED,
 	POWER_SUPPLY_PROP_SYSTEM_TEMP_LEVEL,
 	POWER_SUPPLY_PROP_RESISTANCE,
 	/* Properties of type `const char *' */

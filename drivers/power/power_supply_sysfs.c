@@ -188,6 +188,7 @@ static struct device_attribute power_supply_attrs[] = {
 	/* Local extensions */
 	POWER_SUPPLY_ATTR(usb_hc),
 	POWER_SUPPLY_ATTR(usb_otg),
+	POWER_SUPPLY_ATTR(charge_enabled),
 	POWER_SUPPLY_ATTR(system_temp_level),
 	POWER_SUPPLY_ATTR(resistance),
 	/* Properties of type `const char *' */
