@@ -2523,6 +2523,7 @@ int msm_comm_qbuf(struct vb2_buffer *vb)
 	struct vidc_frame_data frame_data;
 	struct msm_vidc_core *core;
 	struct hfi_device *hdev;
+	int extra_idx = 0;
 
 	q = vb->vb2_queue;
 	inst = q->drv_priv;
@@ -2600,6 +2601,15 @@ int msm_comm_qbuf(struct vb2_buffer *vb)
 			if (vb->v4l2_buf.flags &
 				V4L2_QCOM_BUF_TIMESTAMP_INVALID)
 				frame_data.timestamp = LLONG_MAX;
+			extra_idx =
+				EXTRADATA_IDX(inst->fmts[OUTPUT_PORT]->
+					num_planes);
+			if (extra_idx && (extra_idx < VIDEO_MAX_PLANES) &&
+					vb->v4l2_planes[extra_idx].m.userptr) {
+				frame_data.extradata_addr =
+					vb->v4l2_planes[extra_idx].m.userptr;
+				frame_data.flags |= HAL_BUFFERFLAG_EXTRADATA;
+			}
 			dprintk(VIDC_DBG,
 				"Sending etb to hal: device_addr: 0x%x, alloc: %d, filled: %d, offset: %d, ts: %lld, flags = 0x%x\n",
 				frame_data.device_addr, frame_data.alloc_len,
@@ -2613,7 +2623,6 @@ int msm_comm_qbuf(struct vb2_buffer *vb)
 			dprintk(VIDC_DBG, "Sent etb to HAL\n");
 		} else if (q->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
 			struct vidc_seq_hdr seq_hdr;
-			int extra_idx = 0;
 			frame_data.filled_len = 0;
 			frame_data.offset = 0;
 			frame_data.alloc_len = vb->v4l2_planes[0].length;
@@ -3291,6 +3300,12 @@ enum hal_extradata_id msm_comm_get_hal_extradata_index(
 		break;
 	case V4L2_MPEG_VIDC_INDEX_EXTRADATA_ASPECT_RATIO:
 		ret = HAL_EXTRADATA_ASPECT_RATIO;
+		break;
+	case V4L2_MPEG_VIDC_INDEX_EXTRADATA_INPUT_CROP:
+		ret = HAL_EXTRADATA_INPUT_CROP;
+		break;
+	case V4L2_MPEG_VIDC_INDEX_EXTRADATA_DIGITAL_ZOOM:
+		ret = HAL_EXTRADATA_DIGITAL_ZOOM;
 		break;
 	case V4L2_MPEG_VIDC_EXTRADATA_MPEG2_SEQDISP:
 		ret = HAL_EXTRADATA_MPEG2_SEQDISP;
