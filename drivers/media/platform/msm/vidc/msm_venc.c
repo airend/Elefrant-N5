@@ -910,6 +910,18 @@ static struct msm_vidc_ctrl msm_venc_ctrls[] = {
 		.step = 1,
 		.qmenu = NULL,
 	},
+	{
+		.id = V4L2_CID_MPEG_VIDC_VIDEO_REQUEST_SEQ_HEADER,
+		.name = "Request Seq Header",
+		.type = V4L2_CTRL_TYPE_BUTTON,
+		.minimum = 0,
+		.maximum = 0,
+		.default_value = 0,
+		.step = 0,
+		.menu_skip_mask = 0,
+		.qmenu = NULL,
+		.cluster = 0,
+	},
 };
 
 #define NUM_CTRLS ARRAY_SIZE(msm_venc_ctrls)
@@ -2415,6 +2427,9 @@ static int try_set_ctrl(struct msm_vidc_inst *inst, struct v4l2_ctrl *ctrl)
 		break;
 	case V4L2_CID_MPEG_VIDC_VIDEO_OPERATING_RATE:
 		property_id = 0;
+		break;
+	case V4L2_CID_MPEG_VIDC_VIDEO_REQUEST_SEQ_HEADER:
+		atomic_inc(&inst->get_seq_hdr_cnt);
 		break;
 	default:
 		dprintk(VIDC_ERR, "Unsupported index: %x\n", ctrl->id);

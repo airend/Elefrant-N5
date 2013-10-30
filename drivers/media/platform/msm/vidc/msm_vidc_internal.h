@@ -268,6 +268,7 @@ struct msm_vidc_inst {
 	bool map_output_buffer;
 	struct v4l2_ctrl **ctrls;
 	struct pm_qos_request pm_qos;
+	atomic_t get_seq_hdr_cnt;
 };
 
 extern struct msm_vidc_drv *vidc_driver;
