@@ -21,7 +21,7 @@
 
 #include "kgsl_sync.h"
 
-struct sync_pt *kgsl_sync_pt_create(struct sync_timeline *timeline,
+static struct sync_pt *kgsl_sync_pt_create(struct sync_timeline *timeline,
 	struct kgsl_context *context, unsigned int timestamp)
 {
 	struct sync_pt *pt;
@@ -38,7 +38,7 @@ struct sync_pt *kgsl_sync_pt_create(struct sync_timeline *timeline,
  * This should only be called on sync_pts which have been created but
  * not added to a fence.
  */
-void kgsl_sync_pt_destroy(struct sync_pt *pt)
+static void kgsl_sync_pt_destroy(struct sync_pt *pt)
 {
 	sync_pt_free(pt);
 }

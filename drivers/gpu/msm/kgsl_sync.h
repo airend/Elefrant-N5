@@ -39,9 +39,6 @@ struct kgsl_sync_fence_waiter {
 };
 
 #if defined(CONFIG_SYNC)
-struct sync_pt *kgsl_sync_pt_create(struct sync_timeline *timeline,
-	struct kgsl_context *context, unsigned int timestamp);
-void kgsl_sync_pt_destroy(struct sync_pt *pt);
 int kgsl_add_fence_event(struct kgsl_device *device,
 	u32 context_id, u32 timestamp, void __user *data, int len,
 	struct kgsl_device_private *owner);
@@ -57,17 +54,6 @@ static inline void kgsl_sync_fence_log(struct sync_fence *fence)
 	sync_fence_log(fence);
 }
 #else
-static inline struct sync_pt
-*kgsl_sync_pt_create(struct sync_timeline *timeline,
-	struct kgsl_context *context, unsigned int timestamp)
-{
-	return NULL;
-}
-
-static inline void kgsl_sync_pt_destroy(struct sync_pt *pt)
-{
-}
-
 static inline int kgsl_add_fence_event(struct kgsl_device *device,
 	u32 context_id, u32 timestamp, void __user *data, int len,
 	struct kgsl_device_private *owner)
