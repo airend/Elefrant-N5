@@ -852,6 +852,17 @@ static struct msm_vidc_ctrl msm_venc_ctrls[] = {
 		.qmenu = NULL,
 	},
 	{
+		.id = V4L2_CID_MPEG_VIDC_VIDEO_VPX_ERROR_RESILIENCE,
+		.name = "VP8 Error Resilience mode",
+		.type = V4L2_CTRL_TYPE_BOOLEAN,
+		.minimum = V4L2_MPEG_VIDC_VIDEO_VPX_ERROR_RESILIENCE_DISABLED,
+		.maximum = V4L2_MPEG_VIDC_VIDEO_VPX_ERROR_RESILIENCE_ENABLED,
+		.default_value =
+			V4L2_MPEG_VIDC_VIDEO_VPX_ERROR_RESILIENCE_DISABLED,
+		.step = 1,
+		.qmenu = NULL,
+	},
+	{
 		.id = V4L2_CID_MPEG_VIDC_VIDEO_ENABLE_INITIAL_QP,
 		.name = "Enable setting initial QP",
 		.type = V4L2_CTRL_TYPE_BUTTON,
@@ -2430,6 +2441,11 @@ static int try_set_ctrl(struct msm_vidc_inst *inst, struct v4l2_ctrl *ctrl)
 		break;
 	case V4L2_CID_MPEG_VIDC_VIDEO_REQUEST_SEQ_HEADER:
 		atomic_inc(&inst->get_seq_hdr_cnt);
+		break;
+	case V4L2_CID_MPEG_VIDC_VIDEO_VPX_ERROR_RESILIENCE:
+		property_id = HAL_PARAM_VENC_VPX_ERROR_RESILIENCE_MODE;
+		enable.enable = ctrl->val;
+		pdata = &enable;
 		break;
 	default:
 		dprintk(VIDC_ERR, "Unsupported index: %x\n", ctrl->id);
