@@ -194,6 +194,7 @@ enum hal_property {
 	HAL_PARAM_VENC_ENABLE_INITIAL_QP,
 	HAL_PARAM_VENC_VIDEO_SIGNAL_INFO,
 	HAL_PARAM_VENC_VPX_ERROR_RESILIENCE_MODE,
+	HAL_PARAM_VENC_SEARCH_RANGE,
 };
 
 enum hal_domain {
@@ -885,6 +886,13 @@ enum hal_video_color_space {
 struct hal_video_signal_info {
 	enum hal_video_color_space color_space;
 	bool clamped;
+};
+
+struct hal_vc1e_perf_cfg_type {
+	struct {
+		u32 x_subsampled;
+		u32 y_subsampled;
+	} i_frame, p_frame, b_frame;
 };
 
 enum vidc_resource_id {
