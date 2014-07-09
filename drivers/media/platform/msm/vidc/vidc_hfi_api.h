@@ -195,6 +195,7 @@ enum hal_property {
 	HAL_PARAM_VENC_VIDEO_SIGNAL_INFO,
 	HAL_PARAM_VENC_VPX_ERROR_RESILIENCE_MODE,
 	HAL_PARAM_VENC_H264_NAL_SVC_EXT,
+	HAL_CONFIG_VENC_PERF_MODE,
 	HAL_PARAM_VENC_SEARCH_RANGE,
 };
 
@@ -1011,6 +1012,11 @@ struct hal_ltruse {
 struct hal_ltrmark {
 	u32 markframe;
 };
+
+struct hal_venc_perf_mode {
+	u32 mode;
+};
+
 /* HAL Response */
 
 enum command_response {
