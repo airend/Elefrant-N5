@@ -199,6 +199,7 @@ enum hal_property {
 	HAL_PARAM_VENC_SEARCH_RANGE,
 	HAL_PARAM_VENC_HIER_B_MAX_ENH_LAYERS,
 	HAL_PARAM_VDEC_NON_SECURE_OUTPUT2,
+	HAL_PARAM_VENC_HIER_P_HYBRID_MODE,
 };
 
 enum hal_domain {
@@ -1018,6 +1019,10 @@ struct hal_ltrmark {
 
 struct hal_venc_perf_mode {
 	u32 mode;
+};
+
+struct hal_hybrid_hierp {
+	u32 layers;
 };
 
 /* HAL Response */
