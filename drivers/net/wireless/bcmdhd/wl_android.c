@@ -1056,14 +1056,14 @@ wl_android_set_miracast(struct net_device *dev, char *command, int total_len)
 	return 0;
 
 resume:
-	DHD_ERROR(("%s: turnoff miracast mode because of err%d\n", __FUNCTION__, ret));
+	DHD_ERROR(("%s: turnoff miracast mode because of err %d\n", __FUNCTION__, ret));
 	wl_android_iolist_resume(dev, &miracast_resume_list);
 	return ret;
 }
 
 int wl_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd)
 {
-#define PRIVATE_COMMAND_MAX_LEN	8192
+#define PRIVATE_COMMAND_MAX_LEN 8192
 	int ret = 0;
 	char *command = NULL;
 	int bytes_written = 0;

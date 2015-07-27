@@ -303,6 +303,11 @@ enum snd_soc_pcm_subclass {
 	SND_SOC_PCM_CLASS_BE	= 1,
 };
 
+enum snd_soc_card_subclass {
+	SND_SOC_CARD_CLASS_INIT	= 0,
+	SND_SOC_CARD_CLASS_PCM	= 1,
+};
+
 /*
  * Dynamic PCM DAI link states.
  */
@@ -1017,7 +1022,6 @@ struct soc_multi_mixer_control {
 	int min, max, platform_max, count;
 	unsigned int reg, rreg, shift, rshift, invert;
 };
-
 
 /* enumerated kcontrol */
 struct soc_enum {

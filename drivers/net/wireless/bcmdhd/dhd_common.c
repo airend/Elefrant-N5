@@ -1322,6 +1322,7 @@ dhd_print_buf(void *pbuf, int len, int bytes_per_line)
 	printf("\n");
 #endif /* DHD_DEBUG */
 }
+
 #ifndef strtoul
 #define strtoul(nptr, endptr, base) bcm_strtoul((nptr), (endptr), (base))
 #endif
@@ -1724,12 +1725,13 @@ dhd_arp_get_arp_hostip_table(dhd_pub_t *dhd, void *buf, int buflen, int idx)
 	return 0;
 }
 #endif /* ARP_OFFLOAD_SUPPORT  */
+
 /*
  * Neighbor Discovery Offload: enable NDO feature
  * Called  by ipv6 event handler when interface comes up/goes down
  */
 int
-dhd_ndo_enable(dhd_pub_t * dhd, int ndo_enable)
+dhd_ndo_enable(dhd_pub_t *dhd, int ndo_enable)
 {
 	char iovbuf[DHD_IOVAR_BUF_SIZE];
 	int retcode;
@@ -1754,7 +1756,7 @@ dhd_ndo_enable(dhd_pub_t * dhd, int ndo_enable)
  * Called  by ipv6 event handler when interface comes up
  */
 int
-dhd_ndo_add_ip(dhd_pub_t *dhd, char* ipv6addr, int idx)
+dhd_ndo_add_ip(dhd_pub_t *dhd, char *ipv6addr, int idx)
 {
 	int iov_len = 0;
 	char iovbuf[DHD_IOVAR_BUF_SIZE];
@@ -1775,6 +1777,7 @@ dhd_ndo_add_ip(dhd_pub_t *dhd, char* ipv6addr, int idx)
 		__FUNCTION__));
 	return retcode;
 }
+
 /*
  * Neighbor Discover Offload: disable NDO feature
  * Called  by ipv6 event handler when interface goes down
