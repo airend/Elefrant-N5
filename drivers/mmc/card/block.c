@@ -3268,6 +3268,13 @@ static const struct mmc_fixup blk_fixups[] =
 		  MMC_QUIRK_SEC_ERASE_TRIM_BROKEN),
 	MMC_FIXUP(CID_NAME_ANY, CID_MANFID_HYNIX, CID_OEMID_ANY, add_quirk_mmc,
 		  MMC_QUIRK_BROKEN_DATA_TIMEOUT),
+	/*
+	 * On these SanDisk eMMCs, secure erase is very slow…
+	 */
+	MMC_FIXUP("SEM16G", CID_MANFID_SANDISK_SEM, CID_OEMID_ANY, add_quirk_mmc,
+		  MMC_QUIRK_SEC_ERASE_TRIM_BROKEN),
+	MMC_FIXUP("SEM32G", CID_MANFID_SANDISK_SEM, CID_OEMID_ANY, add_quirk_mmc,
+		  MMC_QUIRK_SEC_ERASE_TRIM_BROKEN),
 
 	/*
 	 * Some devices have issues that requires dummy read
