@@ -3099,17 +3099,7 @@ static int __ioctl_wait_idle(struct msm_fb_data_type *mfd, u32 cmd)
 	return ret;
 }
 
-/*
- * mdss_fb_do_ioctl() - MDSS Framebuffer ioctl function
- * @info:	pointer to framebuffer info
- * @cmd:	ioctl command
- * @arg:	argument to ioctl
- *
- * This function provides an architecture agnostic implementation
- * of the mdss framebuffer ioctl. This function can be called
- * by compat ioctl or regular ioctl to handle the supported commands.
- */
-int mdss_fb_do_ioctl(struct fb_info *info, unsigned int cmd,
+static int mdss_fb_ioctl(struct fb_info *info, unsigned int cmd,
 			 unsigned long arg)
 {
 	struct msm_fb_data_type *mfd;
@@ -3209,15 +3199,6 @@ exit:
 		wake_up_all(&mfd->ioctl_q);
 
 	return ret;
-}
-
-static int mdss_fb_ioctl(struct fb_info *info, unsigned int cmd,
-			 unsigned long arg)
-{
-	if (!info || !info->par)
-		return -EINVAL;
-
-	return mdss_fb_do_ioctl(info, cmd, arg);
 }
 
 struct fb_info *msm_fb_get_writeback_fb(void)
