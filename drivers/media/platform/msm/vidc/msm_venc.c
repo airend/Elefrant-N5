@@ -184,7 +184,6 @@ enum msm_venc_ctrl_cluster {
 	MSM_VENC_CTRL_CLUSTER_DEINTERLACE = 1 << 11,
 	MSM_VENC_CTRL_CLUSTER_USE_LTRFRAME = 1 << 12,
 	MSM_VENC_CTRL_CLUSTER_MAX = 1 << 13,
-	MSM_VENC_CTRL_CLUSTER_SEARCH_RANGE = 1 << 14,
 };
 
 static struct msm_vidc_ctrl msm_venc_ctrls[] = {
@@ -932,7 +931,6 @@ static struct msm_vidc_ctrl msm_venc_ctrls[] = {
 		.step = 0,
 		.menu_skip_mask = 0,
 		.qmenu = NULL,
-		.cluster = 0,
 	},
 	{
 		.id = V4L2_CID_MPEG_VIDC_VIDEO_IFRAME_X_RANGE,
@@ -944,7 +942,6 @@ static struct msm_vidc_ctrl msm_venc_ctrls[] = {
 		.step = 1,
 		.menu_skip_mask = 0,
 		.qmenu = NULL,
-		.cluster = MSM_VENC_CTRL_CLUSTER_SEARCH_RANGE,
 	},
 	{
 		.id = V4L2_CID_MPEG_VIDC_VIDEO_IFRAME_Y_RANGE,
@@ -956,7 +953,6 @@ static struct msm_vidc_ctrl msm_venc_ctrls[] = {
 		.step = 1,
 		.menu_skip_mask = 0,
 		.qmenu = NULL,
-		.cluster = MSM_VENC_CTRL_CLUSTER_SEARCH_RANGE,
 	},
 	{
 		.id = V4L2_CID_MPEG_VIDC_VIDEO_PFRAME_X_RANGE,
@@ -968,7 +964,6 @@ static struct msm_vidc_ctrl msm_venc_ctrls[] = {
 		.step = 1,
 		.menu_skip_mask = 0,
 		.qmenu = NULL,
-		.cluster = MSM_VENC_CTRL_CLUSTER_SEARCH_RANGE,
 	},
 	{
 		.id = V4L2_CID_MPEG_VIDC_VIDEO_PFRAME_Y_RANGE,
@@ -980,7 +975,6 @@ static struct msm_vidc_ctrl msm_venc_ctrls[] = {
 		.step = 1,
 		.menu_skip_mask = 0,
 		.qmenu = NULL,
-		.cluster = MSM_VENC_CTRL_CLUSTER_SEARCH_RANGE,
 	},
 	{
 		.id = V4L2_CID_MPEG_VIDC_VIDEO_BFRAME_X_RANGE,
@@ -992,7 +986,6 @@ static struct msm_vidc_ctrl msm_venc_ctrls[] = {
 		.step = 1,
 		.menu_skip_mask = 0,
 		.qmenu = NULL,
-		.cluster = MSM_VENC_CTRL_CLUSTER_SEARCH_RANGE,
 	},
 	{
 		.id = V4L2_CID_MPEG_VIDC_VIDEO_BFRAME_Y_RANGE,
@@ -1004,7 +997,6 @@ static struct msm_vidc_ctrl msm_venc_ctrls[] = {
 		.step = 1,
 		.menu_skip_mask = 0,
 		.qmenu = NULL,
-		.cluster = MSM_VENC_CTRL_CLUSTER_SEARCH_RANGE,
 	},
 	{
 		.id = V4L2_CID_MPEG_VIDC_VIDEO_H264_NAL_SVC,
