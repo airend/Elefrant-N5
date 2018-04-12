@@ -350,7 +350,7 @@ static inline int ion_handle_get_flags(struct ion_client *client,
 struct ion_allocation_data {
 	size_t len;
 	size_t align;
-#ifdef __KERNEL__
+#if defined __KERNEL__ || defined _ION_HEAP_MASK_COMPATIBILITY_WA
 	unsigned int heap_mask;
 #else
 	unsigned int heap_id_mask;
