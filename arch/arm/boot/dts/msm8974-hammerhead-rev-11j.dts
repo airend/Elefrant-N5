@@ -14,7 +14,11 @@
 /dts-v1/;
 
 /include/ "msm8974-lge-common/msm8974-v2.2-lge.dtsi"
-/include/ "msm8974-hammerhead/msm8974-hammerhead-rev-11j.dtsi"
+/include/ "msm8974-hammerhead/msm8974-hammerhead-rev-11.dtsi"
+
+&mdss_dsi0 {
+	qcom,dsi-pref-prim-pan = <&dsi_jdi_command_ors_j1>;
+};
 
 / {
 	model = "LGE MSM 8974 HAMMERHEAD";
