@@ -20,6 +20,7 @@
 #include <linux/platform_device.h>
 #include <linux/init.h>
 #include <linux/module.h>
+#include <linux/wakelock.h>
 #include <linux/workqueue.h>
 #include <linux/of_device.h>
 #include <linux/power_supply.h>

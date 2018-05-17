@@ -19,6 +19,7 @@
 #include <linux/mutex.h>
 #include <linux/err.h>
 #include <linux/i2c.h>
+#include <linux/wakelock.h>
 #include <linux/power_supply.h>
 #include <linux/slab.h>
 #include <linux/power/max17048_battery.h>
